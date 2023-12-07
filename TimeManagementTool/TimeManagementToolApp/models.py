@@ -5,6 +5,7 @@ from django.db import models
 class Kurssi(models.Model):
     #kurssi, jonka tehtävä kyseessä
     kurssi = models.CharField(max_length=200)
+ 
 
     class Meta:
         verbose_name_plural = 'Kurssit'
@@ -17,9 +18,10 @@ class Teht(models.Model):
     #kurssin tehtävänannon nimi
     kurssi = models.ForeignKey(Kurssi, on_delete=models.CASCADE)
     teht = models.TextField()
+    dedis = models.DateTimeField(null=True)
 
     class Meta:
         verbose_name_plural = 'Tehtavat'
 
     def __str__(self):
-        return f"{self.text[:50]}"
+        return f"{self.teht[:50]}"
