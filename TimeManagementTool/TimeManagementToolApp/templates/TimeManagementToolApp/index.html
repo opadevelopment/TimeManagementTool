@@ -10,7 +10,7 @@
     {% for kurssi in kurssit %}
         <h2>{{ kurssi.kurssi }}</h2>
         <ul>
-            {% for teht in kurssi.teht_set.all %}
+            {% for teht in kurssi.teht_set.all|dictsort:"dedis" %}
                 <li>
                     <p>{{ teht.teht }}</p>
                     {% if teht.dedis %}
