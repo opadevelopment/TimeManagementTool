@@ -1,3 +1,17 @@
-<p>Ajanhallinta</p>
-
-<p>Ajanhallintasivusto auttaa sinua pysymään ajan tasalla koulutehtävien kanssa</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kurssit</title>
+</head>
+<body>
+    <h1>Kurssit List</h1>
+    {% for kurssi in kurssit %}
+        <h2>{{ kurssi.kurssi }}</h2>
+        <ul>
+            {% for teht in kurssi.teht_set.all %}
+                <li>{{ teht.teht }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</body>
+</html>

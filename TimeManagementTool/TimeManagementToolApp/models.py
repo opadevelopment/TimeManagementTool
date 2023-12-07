@@ -22,4 +22,4 @@ class Teht(models.Model):
         verbose_name_plural = 'Tehtavat'
 
     def __str__(self):
-        return f"{self.text[:50]}"
+        return f"{self.teht[:50]}"
