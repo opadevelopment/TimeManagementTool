@@ -31,6 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #omat apit
+    'TimeManagementToolApp',
+
+    #defaultit
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
