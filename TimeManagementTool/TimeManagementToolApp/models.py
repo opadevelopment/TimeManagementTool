@@ -5,6 +5,7 @@ from django.db import models
 class Kurssi(models.Model):
     #kurssi, jonka tehtävä kyseessä
     kurssi = models.CharField(max_length=200)
+    
  
 
     class Meta:
@@ -15,7 +16,7 @@ class Kurssi(models.Model):
 
 
 class Teht(models.Model):
-    #kurssin tehtävänannon nimi
+    #kurssin tehtävänanto
     kurssi = models.ForeignKey(Kurssi, on_delete=models.CASCADE)
     teht = models.TextField()
     dedis = models.DateTimeField(null=True)

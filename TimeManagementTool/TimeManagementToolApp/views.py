@@ -7,12 +7,13 @@ from django.db.models.functions import Lower
 
 def index(request):
     #etusivu ajanhallinnalle
-    kurssit = Kurssi.objects.annotate(lower_kurssi=Lower('kurssi')).order_by('lower_kurssi')
+    kurssit = Kurssi.objects.annotate(lower_kurssi=Lower('kurssi')).order_by('lower_kurssi') 
+    #järjestää kurssit aakkosjärjestykseen huomioiden myös pienet alkukirjaimet
     return render(request, 'TimeManagementToolApp/index.html',{'kurssit': kurssit})
 
 def kurssit(request):
     #kaikki kurssit
-    kurssit = Kurssi.objects.order_by('id')
+    kurssit = Kurssi.objects.annotate(lower_kurssi=Lower('kurssi')).order_by('lower_kurssi') 
     context = {'kurssit': kurssit}
     return render(request, 'TimeManagementToolApp/kurssit.html', context)
 
