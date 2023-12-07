@@ -11,7 +11,14 @@
         <h2>{{ kurssi.kurssi }}</h2>
         <ul>
             {% for teht in kurssi.teht_set.all %}
-                <li>{{ teht.teht }}</li>
+                <li>
+                    <p>{{ teht.teht }}</p>
+                    {% if teht.dedis %}
+                        <p>Deadline: {{ teht.dedis|date:"F j, Y" }}</p>
+                    {% endif %}
+                </li>
+            {% empty %}
+                <li>Ei lisättyjä tehtäviä tälle kurssille</li>
             {% endfor %}
         </ul>
     {% endfor %}
