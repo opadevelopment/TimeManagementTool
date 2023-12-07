@@ -14,7 +14,7 @@
                 <li>
                     <p>{{ teht.teht }}</p>
                     {% if teht.dedis %}
-                        <p>Deadline: {{ teht.dedis|date:"F j, Y" }}</p>
+                        <p>Deadline: <span style="color: red;">{{ teht.dedis|date:"F j, Y" }}</span></p>
                     {% endif %}
                 </li>
             {% empty %}
