@@ -20,5 +20,5 @@ def kurssi(request, kurssi_id):
     #näytä yhden kurssin lisätyt tehtävät
     kurssi = Kurssi.objects.get(id=kurssi_id)
     tehtavat = kurssi.teht_set.order_by('teht')
-    context = {'kurssi': kurssi, 'tehtavat': tehtavat}
+    context = {'kurssi': kurssi, 'teht': tehtavat}
     return render(request, 'TimeManagementToolApp/kurssi.html', context)
