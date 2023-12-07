@@ -1,0 +1,17 @@
+{% extends 'TimeManagementToolApp/base.html' %}
+
+{% block content %}
+
+    <p>Kurssi: {{ kurssi.kurssi }}</p>
+
+    <p>Tehtävät:</p>
+    <ul>
+        {% for teht in teht %}
+            <li>
+                <p>{{ teht.teht|linebreaks }}</p>
+            </li>
+        {% empty %}
+            <li>Ei lisättyjä tehtäviä tälle kurssille</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
