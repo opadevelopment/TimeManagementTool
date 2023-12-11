@@ -1,7 +1,31 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* linkkien muokkaus */
+        p a {
+            color: #d2691e; /* Set your regular color */
+            text-decoration: none; /* Remove underline */
+            transition: color 0.3s; /* Add a smooth transition effect */
+        }
+
+        /* linkin vaihtoväri */
+        p a:hover {
+            color: #ff1493; /* Set your hover color */
+        }
+    </style>
+</head>
+<body>
+
 <p>
     <a href="{% url 'TimeManagementToolApp:index' %}">Ajanhallinta</a> -
     <a href="{% url 'TimeManagementToolApp:kurssit' %}">Kurssit</a>
-
 </p>
 
-{% block content%}{% endblock content %}
+{% block content %}{% endblock content %}
+
+</body>
+</html>
