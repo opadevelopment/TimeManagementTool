@@ -16,17 +16,26 @@
         ul a:hover {
             color: #ff1493; 
         }
+
+        /* otsikon fonttikoko */
+        h1 {
+            font-size: 32px;
+        }
+        /* kurssin fonttikoko */
+        ul li {
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
-    <p>Kurssit</p>
+    <h1>Kurssit</h1> 
 
     <ul>
         {% for kurssi in kurssit %}
             <li>
                 <a href="{% url 'TimeManagementToolApp:kurssi' kurssi.id %}">
-                    {{ kurssi.kurssi }}</a></li>
-            
+                    {{ kurssi.kurssi }}</a>
+            </li>
         {% empty %}
             <li>Kursseja ei ole vielä lisätty</li>
         {% endfor %}
@@ -35,3 +44,4 @@
 </html>
 
 {% endblock content %}
+
