@@ -4,11 +4,19 @@
 <html>
 <head>
     <title>Kurssit</title>
+    <style>
+        .kurssi-header {
+            background-color:#FFF8DC;
+            padding: 10px;
+            display: inline;
+        }
+
+    </style>
 </head>
 <body>
     <h1>Kurssit</h1>
     {% for kurssi in kurssit %}
-        <h2>{{ kurssi.kurssi }}</h2>
+        <h2 class="kurssi-header">{{ kurssi.kurssi }}</h2>
         <ul>
             {% for teht in kurssi.teht_set.all|dictsort:"dedis" %}
                 <li>
