@@ -1,17 +1,68 @@
 {% extends 'TimeManagementToolApp/base.html' %}
 
 {% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+        }
+        .note-container {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            max-width: 600px;
+            margin: auto;
+        }
+        .note-header {
+            font-size: 28px;
+            font-weight: 600;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+        .note-list {
+            list-style: none;
+            padding: 0;
+            border-top: 1px solid #eaeaea;
+        }
+        .note-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eaeaea;
+        }
+        .note-list li:last-child {
+            border-bottom: none;
+        }
+        .note-text {
+            margin: 0;
+            color: #555555;
+        }
+        .no-tasks {
+            text-align: center;
+            color: #888888;
+        }
+    </style>
+</head>
+<body>
+    <div class="note-container">
+        <p class="note-header">Kurssi: {{ kurssi.kurssi }}</p>
 
-    <p>Kurssi: {{ kurssi.kurssi }}</p>
+        <p class="note-header">Tehtävät:</p>
+        <ul class="note-list">
+            {% for teht in teht %}
+                <li>
+                    <p class="note-text">{{ teht.teht|linebreaks }}</p>
+                </li>
+            {% empty %}
+                <p class="no-tasks">Ei lisättyjä tehtäviä tälle kurssille</p>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
 
-    <p>Tehtävät:</p>
-    <ul>
-        {% for teht in teht %}
-            <li>
-                <p>{{ teht.teht|linebreaks }}</p>
-            </li>
-        {% empty %}
-            <li>Ei lisättyjä tehtäviä tälle kurssille</li>
-        {% endfor %}
-    </ul>
 {% endblock content %}

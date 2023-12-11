@@ -6,35 +6,32 @@
 <head>
     <title>Kurssit</title>
     <style>
-        /* linkkien muokkaus */
-        ul a {
-            color: #d2691e; 
-            text-decoration: none; 
-            transition: color 0.3s; 
+        .course-link {
+            display: block;
+            background-color: #e3f2fd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: black; /* Change as needed */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
         }
-
-        ul a:hover {
-            color: #ff1493; 
-        }
-
-        /* otsikon fonttikoko */
-        h1 {
-            font-size: 32px;
-        }
-        /* kurssin fonttikoko */
-        ul li {
-            font-size: 20px;
+        .course-link:hover {
+            background-color: #d1e8ff; /* Slightly lighter on hover */
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
     </style>
 </head>
 <body>
     <h1>Kurssit</h1> 
 
-    <ul>
+    <ul style="list-style: none; padding: 0;">
         {% for kurssi in kurssit %}
             <li>
-                <a href="{% url 'TimeManagementToolApp:kurssi' kurssi.id %}">
-                    {{ kurssi.kurssi }}</a>
+                <a class="course-link" href="{% url 'TimeManagementToolApp:kurssi' kurssi.id %}">
+                    {{ kurssi.kurssi }}
+                </a>
             </li>
         {% empty %}
             <li>Kursseja ei ole vielä lisätty</li>
@@ -44,4 +41,3 @@
 </html>
 
 {% endblock content %}
-
