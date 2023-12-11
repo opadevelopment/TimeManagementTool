@@ -26,7 +26,14 @@ SECRET_KEY = 'django-insecure-6skkl)s9y%=iwg84mc=s3w-ij$+&v_j$q)y(vzxpmxy$ebxh0-
 DEBUG = True
 
 ALLOWED_HOSTS = []
+LANGUAGE_CODE = 'fi-FI'
 
+USE_I18N = True
+
+USE_L10N = True
+
+# Optional: Set the time zone to Helsinki if your application primarily deals with Finnish dates and times
+TIME_ZONE = 'Europe/Helsinki'
 
 # Application definition
 

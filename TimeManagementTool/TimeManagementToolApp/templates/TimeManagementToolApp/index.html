@@ -4,33 +4,48 @@
 <html>
 <head>
     <title>Kurssit</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
-        .kurssi-header {
-            background-color:#FFF8DC;
-            padding: 10px;
-            display: inline;
+        body {
+            padding: 20px;
         }
-
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 20px;
+        }
+        .kurssi-header {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .deadline {
+            color: red;
+        }
     </style>
 </head>
 <body>
     <h1>Kurssit</h1>
-    {% for kurssi in kurssit %}
-        <h2 class="kurssi-header">{{ kurssi.kurssi }}</h2>
-        <ul>
-            {% for teht in kurssi.teht_set.all|dictsort:"dedis" %}
-                <li>
-                    <p>{{ teht.teht }}</p>
-                    {% if teht.dedis %}
-                        <p>Deadline: <span style="color: red;">{{ teht.dedis|date:"F j, Y" }}</span></p>
-                    {% endif %}
-                </li>
-            {% empty %}
-                <li>Ei lisättyjä tehtäviä tälle kurssille</li>
-            {% endfor %}
-        </ul>
-    {% endfor %}
+    <div class="grid-container">
+        {% for kurssi in kurssit %}
+            <div class="kurssi-header">
+                <h2>{{ kurssi.kurssi }}</h2>
+                <ul class="list-unstyled">
+                    {% for teht in kurssi.teht_set.all|dictsort:"dedis" %}
+                        <li>
+                            <p><strong>{{ teht.teht }} :</strong></p>
+                            {% if teht.dedis %}
+                                <p>Deadline: <span class="deadline">{{ teht.dedis|date:"d.m.Y H:i" }}</span></p>
+                            {% endif %}
+                        </li>
+                    {% empty %}
+                        <li>Ei lisättyjä tehtäviä tälle kurssille</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
 </body>
 </html>
-
 {% endblock content %}
