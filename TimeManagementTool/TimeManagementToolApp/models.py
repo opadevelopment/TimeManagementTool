@@ -1,13 +1,11 @@
 from django.db import models
 
-# Create your models here.
+# mallit
 
 class Kurssi(models.Model):
     #kurssi, jonka tehtävä kyseessä
     kurssi = models.CharField(max_length=200)
     
- 
-
     class Meta:
         verbose_name_plural = 'Kurssit'
 
