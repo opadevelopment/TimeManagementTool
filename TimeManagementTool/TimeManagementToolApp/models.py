@@ -19,6 +19,7 @@ class Teht(models.Model):
     teht = models.TextField()
     dedis = models.DateTimeField(null=True)
 
+
     class Meta:
         verbose_name_plural = 'Tehtavat'
 
