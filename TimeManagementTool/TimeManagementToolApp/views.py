@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Kurssi
+from .models import Kurssi, Teht
 from django.db.models.functions import Lower
 from .forms import KurssiForm, TehtForm
 
@@ -67,7 +67,7 @@ def lisaa_tehtava(request, kurssi_id):
 
 def muokkaa_tehtava(request, teht_id):
     #Muokataan olemassa olevaa tehtävää
-    teht= teht_id.objects.get(id=teht_id)
+    teht= Teht.objects.get(id=teht_id)
     kurssi = teht.kurssi
     # Lisätään kun userit käytössä
     # Suojataan muokkausoikeus vain oikealle käyttäjälle
