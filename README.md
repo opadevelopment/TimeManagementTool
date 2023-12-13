@@ -1,4 +1,2 @@
 # TimeManagementTool
 Django Website
-
-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
