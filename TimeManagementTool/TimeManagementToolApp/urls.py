@@ -15,4 +15,5 @@ urlpatterns = [
     path('muokkaa_tehtava/<int:teht_id>', views.muokkaa_tehtava, name='muokkaa_tehtava'),
     #Lisää tehtävä -sivu
     path('lisaa_tehtava/<int:kurssi_id>/', views.lisaa_tehtava, name='lisaa_tehtava'),
+    
 ]

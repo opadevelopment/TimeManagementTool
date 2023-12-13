@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from .models import Kurssi, Teht
 from django.db.models.functions import Lower
 from .forms import KurssiForm, TehtForm
+from django.urls import reverse
 
 
 
@@ -88,3 +89,9 @@ def muokkaa_tehtava(request, teht_id):
     context = {'teht': teht, 'kurssi': kurssi, 'form': form}
     return render(request, 'TimeManagementToolApp/muokkaa_tehtava.html', context)
 
+def delete_teht(request, teht_id):
+    teht = get_object_or_404(Teht, id=teht_id)
+    if request.method == 'POST':
+        teht.delete()
+        return redirect(reverse('TimeManagementToolApp:kurssi'))  # Redirect to a relevant page
+    return render(request, 'delete_confirm.html', {'teht': teht})

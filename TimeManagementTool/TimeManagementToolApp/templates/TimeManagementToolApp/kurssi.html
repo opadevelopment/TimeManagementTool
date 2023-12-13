@@ -56,13 +56,14 @@
 
     <div class="note-container">
         <p class="note-header">Kurssi: {{ kurssi.kurssi }}</p>
-        <p class="note-header">Tehtävät:</p> 
-        
-        <p>Tehtävät:</p>
-
         <p>
             <a href="{% url 'TimeManagementToolApp:lisaa_tehtava' kurssi.id %}">Lisää tehtävä</a>
         </p>
+        <p class="note-header">Tehtävät:</p> 
+        
+        
+
+       
     
         <ul class="note-list">
             {% for teht in kurssi.teht_set.all|dictsort:"dedis" %} <!-- Käy läpi kurssin tehtävät ja järjestää ne deadlinen mukaan -->
