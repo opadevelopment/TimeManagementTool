@@ -1,0 +1,19 @@
+{% extends 'TimeManagementToolApp/base.html' %}
+
+{% block content %}
+
+    <p>Kurssit</p>
+
+    <ul>
+        {% for kurssi in kurssit %}
+            <li>
+                <a href="{% url 'TimeManagementToolApp:kurssi' kurssi.id %}">
+                    {{ kurssi.kurssi }}</a></li>
+            
+        {% empty %}
+            <li>Kursseja ei ole vielä lisätty</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'TimeManagementToolApp:lisaa_kurssi' %}">Lisää uusi kurssi</a>
+    
+{% endblock content %}
