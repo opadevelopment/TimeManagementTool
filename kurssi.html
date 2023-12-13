@@ -1,0 +1,26 @@
+{% extends 'TimeManagementToolApp/base.html' %}
+
+{% block content %}
+
+    <p>Kurssi: {{ kurssi.kurssi }}</p>
+
+    <p>Tehtävät:</p>
+
+    <p>
+        <a href="{% url 'TimeManagementToolApp:lisaa_tehtava' kurssi.id %}">Lisää tehtävä</a>
+    </p>
+
+    <ul>
+        {% for tehtava in kurssi.teht %}
+            <li>
+                <p>{{ teht.teht|linebreaks }}</p>
+                <p>
+                    <a href="{% url 'TimeManagementToolApp:muokkaa_tehtava' teht.id %}">
+                        Muokkaa tehtävää</a></p>
+                </p>
+            </li>
+        {% empty %}
+            <li>Ei lisättyjä tehtäviä tälle kurssille</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
