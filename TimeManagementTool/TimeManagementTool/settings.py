@@ -40,6 +40,7 @@ TIME_ZONE = 'Europe/Helsinki'
 INSTALLED_APPS = [
     #omat apit
     'TimeManagementToolApp',
+    'accounts',
 
 
     #defaultit
@@ -133,3 +134,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Meidän asetukset
+LOGIN_REDIRECT_URL = 'TimeManagementToolApp:index'
+LOGOUT_REDIRECT_URL = 'TimeManagementToolApp:index'

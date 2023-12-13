@@ -22,10 +22,24 @@
 
 <p>
     <a href="{% url 'TimeManagementToolApp:index' %}">Ajanhallinta</a> -
-    <a href="{% url 'TimeManagementToolApp:kurssit' %}">Kurssit</a>
+    <a href="{% url 'TimeManagementToolApp:kurssit' %}">Kurssit</a> -
+    {% if user.is_authenticated %}
+        Hei, {{ user.username }}.
+    {% else %}
+        <a href="{% url 'accounts:rekist' %}">Rekisteröidy</a> -
+        <a href="{% url 'accounts:login' %}">Kirjaudu</a>
+    {% endif %}
 </p>
 
 {% block content %}{% endblock content %}
+
+{% if user.is_authenticated %}
+    <hr />
+    <form action="{% url 'accounts:logout' %}" method='post'>
+        {% csrf_token %}
+        <button name='submit'>Kirjaudu ulos</button>
+    </form>
+{% endif %}
 
 </body>
 </html>

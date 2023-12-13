@@ -3,6 +3,7 @@ from .models import Kurssi
 from django.db.models.functions import Lower
 
 
+
 # Create your views here.
 
 def index(request):
@@ -23,3 +24,4 @@ def kurssi(request, kurssi_id):
     tehtavat = kurssi.teht_set.order_by('teht')
     context = {'kurssi': kurssi, 'teht': tehtavat}
     return render(request, 'TimeManagementToolApp/kurssi.html', context)
+
