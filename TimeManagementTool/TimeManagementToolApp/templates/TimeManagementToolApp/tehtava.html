@@ -1,0 +1,18 @@
+{% extends 'TimeManagementToolApp/base.html' %}
+
+{% block content %}
+
+    <p>Tehtävä: {{tehtava.tehtava}} </p>
+    <p>Kurssilla <a href="{% url 'TimeManagementToolApp:tehtava' tehtava.kurssi %}">
+        {{ tehtava.kurssi }}</a> </p>
+
+    <ul>
+       <p>Deadline: {{ deadline.tehtava }}</p>
+       <p>Tehty: {{ valmis}}</p>
+
+        {% empty %}
+            <li>Kursseja ei ole vielä lisätty</li>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}

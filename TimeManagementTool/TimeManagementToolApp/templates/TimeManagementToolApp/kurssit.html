@@ -26,6 +26,8 @@
 <body>
     <h1>Kurssit</h1>
 
+
+    <a href="{% url 'TimeManagementToolApp:lisaa_kurssi' %}">Lisää uusi kurssi</a>
     <ul style="list-style: none; padding: 0;"> <!-- Lista ilman tyyliteltyjä listamerkkejä ja ilman paddingia -->
         {% for kurssi in kurssit %} <!-- Käydään läpi 'kurssit' lista -->
             <li>

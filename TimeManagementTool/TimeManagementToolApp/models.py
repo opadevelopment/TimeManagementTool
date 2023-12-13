@@ -18,6 +18,7 @@ class Teht(models.Model):
     kurssi = models.ForeignKey(Kurssi, on_delete=models.CASCADE)
     teht = models.TextField()
     dedis = models.DateTimeField(null=True)
+    valmis = models.BooleanField(null=True)
 
 
     class Meta:

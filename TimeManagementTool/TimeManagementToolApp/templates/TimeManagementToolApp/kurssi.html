@@ -1,6 +1,8 @@
 {% extends 'TimeManagementToolApp/base.html' %} <!-- Hakee pohjan 'TimeManagementToolApp/base.html' tiedostosta -->
 
 {% block content %}
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,12 +53,17 @@
     </style>
 </head>
 <body>
+
     <div class="note-container">
         <p class="note-header">Kurssi: {{ kurssi.kurssi }}</p>
-
-
         <p class="note-header">Tehtävät:</p> 
+        
+        <p>Tehtävät:</p>
 
+        <p>
+            <a href="{% url 'TimeManagementToolApp:lisaa_tehtava' kurssi.id %}">Lisää tehtävä</a>
+        </p>
+    
         <ul class="note-list">
             {% for teht in kurssi.teht_set.all|dictsort:"dedis" %} <!-- Käy läpi kurssin tehtävät ja järjestää ne deadlinen mukaan -->
                 <li>
@@ -64,7 +71,8 @@
                     {% if teht.dedis %} <!-- Tarkistaa, onko tehtävällä deadline -->
                         <p>Deadline: <span class="deadline">{{ teht.dedis|date:"d.m.Y H:i" }}</span>
                         </p> <!-- Näyttää deadlinen -->
-
+                        <a href="{% url 'TimeManagementToolApp:muokkaa_tehtava' teht.id %}">
+                            Muokkaa tehtävää</a></p>
 
                     {% endif %}
                 </li>

@@ -1,0 +1,13 @@
+{% extends 'TimeManagementToolApp/base.html' %}
+
+{% block content %}
+
+    <p>Lisää kurssi:</p>
+
+    <form action ="{% url 'TimeManagementToolApp:lisaa_kurssi' %}" method='post'>
+        {% csrf_token %}
+        {{ form.as_div }}
+        <button name = "submit">Lisää kurssi</button>
+    </form>
+
+{% endblock content %}
