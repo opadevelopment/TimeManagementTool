@@ -1,43 +1,43 @@
-{% extends 'TimeManagementToolApp/base.html' %}
+{% extends 'TimeManagementToolApp/base.html' %} <!-- Hakee pohjan 'TimeManagementToolApp/base.html' tiedostosta -->
 
 {% block content %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Kurssit</title>
+    <title>Kurssit</title> 
     <style>
         .course-link {
             display: block;
-            background-color: #e3f2fd;
+            background-color: #e3f2fd; /* Taustaväri */
             padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            text-decoration: none;
-            color: black; /* Change as needed */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: background-color 0.3s, box-shadow 0.3s;
+            margin-bottom: 10px; /* Alareunan marginaali */
+            border-radius: 5px; /* Reunojen pyöristys */
+            text-decoration: none; /* Poistaa tekstistä korostuksen */
+            color: black; /* Tekstin väri */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Laatikon varjostus */
+            transition: background-color 0.3s, box-shadow 0.3s; /* Värin ja varjostuksen siirtymäefektit */
         }
         .course-link:hover {
-            background-color: #d1e8ff; /* Slightly lighter on hover */
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            background-color: #d1e8ff; /* Taustaväri kun hiiri on linkin päällä */
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Varjostus kun hiiri on linkin päällä */
         }
     </style>
 </head>
 <body>
-    <h1>Kurssit</h1> 
+    <h1>Kurssit</h1>
 
-    <ul style="list-style: none; padding: 0;">
-        {% for kurssi in kurssit %}
+    <ul style="list-style: none; padding: 0;"> <!-- Lista ilman tyyliteltyjä listamerkkejä ja ilman paddingia -->
+        {% for kurssi in kurssit %} <!-- Käydään läpi 'kurssit' lista -->
             <li>
                 <a class="course-link" href="{% url 'TimeManagementToolApp:kurssi' kurssi.id %}">
-                    {{ kurssi.kurssi }}
+                    {{ kurssi.kurssi }} <!-- Näyttää kurssin nimen -->
                 </a>
             </li>
-        {% empty %}
-            <li>Kursseja ei ole vielä lisätty</li>
+        {% empty %} <!-- Jos 'kurssit' lista on tyhjä -->
+            <li>Kursseja ei ole vielä lisätty</li> <!-- Näyttää viestin, että kursseja ei ole lisätty -->
         {% endfor %}
     </ul>
 </body>
 </html>
 
-{% endblock content %}
+{% endblock content %} <!-- Päättää sisältölohkon -->

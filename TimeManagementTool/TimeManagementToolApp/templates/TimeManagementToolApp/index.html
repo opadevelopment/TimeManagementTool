@@ -1,46 +1,47 @@
-{% extends 'TimeManagementToolApp/base.html' %}
+{% extends 'TimeManagementToolApp/base.html' %} <!-- Hakee pohjan 'TimeManagementToolApp/base.html' tiedostosta -->
+
 {% block content %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Kurssit</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Kurssit</title> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> <!-- Lisää Bootstrapin -->
     <style>
         body {
             padding: 20px;
         }
         .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            grid-gap: 20px;
+            display: grid; /* muuttaa elementin grid muotoon */
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Määrittää sarakkeet gridille */
+            grid-gap: 20px; /* väli gridin elementtien välillä */
         }
         .kurssi-header {
-            background-color: #e3f2fd;
+            background-color: #e3f2fd; /* Asettaa taustavärin kurssin otsikolle */
             padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 5px; /* Pyöristää reunat */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Asettaa varjon laatikolle */
         }
         .deadline {
-            color: red;
+            color: red; /* Asettaa tekstin värin punaiseksi deadline-tekstille */
         }
     </style>
 </head>
 <body>
-    <h1>Kurssit</h1>
+    <h1>Kurssit</h1> 
     <div class="grid-container">
-        {% for kurssi in kurssit %}
+        {% for kurssi in kurssit %} 
             <div class="kurssi-header">
-                <h2>{{ kurssi.kurssi }}</h2>
+                <h2>{{ kurssi.kurssi }}</h2> <!-- Näyttää kurssin nimen -->
                 <ul class="list-unstyled">
-                    {% for teht in kurssi.teht_set.all|dictsort:"dedis" %}
+                    {% for teht in kurssi.teht_set.all|dictsort:"dedis" %} 
                         <li>
-                            <p><strong>{{ teht.teht }} :</strong></p>
-                            {% if teht.dedis %}
-                                <p>Deadline: <span class="deadline">{{ teht.dedis|date:"d.m.Y H:i" }}</span></p>
+                            <p><strong>{{ teht.teht }} :</strong></p> <!-- Näyttää tehtävän nimen -->
+                            {% if teht.dedis %} <!-- Tarkistaa, onko tehtävällä deadline -->
+                                <p>Deadline: <span class="deadline">{{ teht.dedis|date:"d.m.Y H:i" }}</span></p> <!-- Näyttää deadlinen -->
                             {% endif %}
                         </li>
-                    {% empty %}
-                        <li>Ei lisättyjä tehtäviä tälle kurssille</li>
+                    {% empty %} <!-- Jos tehtäviä ei ole -->
+                        <li>Ei lisättyjä tehtäviä tälle kurssille</li> <!-- Näyttää viestin, että tehtäviä ei ole lisätty -->
                     {% endfor %}
                 </ul>
             </div>

@@ -1,4 +1,4 @@
-{% extends 'TimeManagementToolApp/base.html' %}
+{% extends 'TimeManagementToolApp/base.html' %} <!-- Hakee pohjan 'TimeManagementToolApp/base.html' tiedostosta -->
 
 {% block content %}
 <!DOCTYPE html>
@@ -6,47 +6,47 @@
 <head>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            line-height: 1.6;
+            font-family: 'Arial', sans-serif; /* Asettaa tekstin fontin */
+            background-color: #f4f4f4; /* Taustaväri */
+            line-height: 1.6; /* Rivien korkeus */
         }
         .note-container {
-            background-color: #e0ffff;
+            background-color: #e0ffff; /* Taustaväri muistiinpanoille */
             padding: 20px;
-            margin-top: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            max-width: 600px;
-            margin: auto;
+            margin-top: 20px; /* Ylämarginaali */
+            border-radius: 8px; /* Reunojen pyöristys */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Varjostus */
+            max-width: 600px; /* Maksimileveys */
+            margin: auto; /* Keskittää elementin */
         }
         .note-header {
             font-size: 28px;
-            font-weight: 600;
+            font-weight: 600; 
             color: #333333;
-            margin-bottom: 20px;
+            margin-bottom: 20px; /* Alareunan marginaali */
         }
         .note-list {
-            list-style: none;
+            list-style: none; /* Poistaa listamerkit */
             padding: 0;
-            border-top: 1px solid #eaeaea;
+            border-top: 1px solid #eaeaea; /* Ylärivin reunaviiva */
         }
         .note-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eaeaea;
+            padding: 10px 0; 
+            border-bottom: 1px solid #eaeaea; /* Alareunan reunaviiva */
         }
         .note-list li:last-child {
-            border-bottom: none;
+            border-bottom: none; /* Poistaa viimeisen listaelementin alareunan reunaviivan */
         }
         .note-text {
-            margin: 0;
-            color: #555555;
+            margin: 0; /* Ei marginaalia */
+            color: #555555; /* Tekstin väri */
         }
         .no-tasks {
-            text-align: center;
-            color: #888888;
+            text-align: center; /* Keskittää tekstin */
+            color: #888888; /* Tekstin väri, kun tehtäviä ei ole */
         }
         .deadline {
-            color: red;
+            color: red; /* Värjää deadline-tekstin punaiseksi */
         }
     </style>
 </head>
@@ -55,20 +55,20 @@
         <p class="note-header">Kurssi: {{ kurssi.kurssi }}</p>
 
 
-        <p class="note-header">Tehtävät:</p>
+        <p class="note-header">Tehtävät:</p> 
         <ul class="note-list">
-            {% for teht in kurssi.teht_set.all|dictsort:"dedis" %}
+            {% for teht in kurssi.teht_set.all|dictsort:"dedis" %} <!-- Käy läpi kurssin tehtävät ja järjestää ne deadlinen mukaan -->
                 <li>
-                    <p class="note-text">{{ teht.teht|linebreaks }}</p>
-                    {% if teht.dedis %}
+                    <p class="note-text">{{ teht.teht|linebreaks }}</p> <!-- Näyttää tehtävän tekstin -->
+                    {% if teht.dedis %} <!-- Tarkistaa, onko tehtävällä deadline -->
                         <p>Deadline: <span class="deadline">{{ teht.dedis|date:"d.m.Y H:i" }}</span>
-                        </p>
+                        </p> <!-- Näyttää deadlinen -->
 
 
                     {% endif %}
                 </li>
-            {% empty %}
-                <p class="no-tasks">Ei lisättyjä tehtäviä tälle kurssille</p>
+            {% empty %} <!-- Jos tehtäviä ei ole -->
+                <p class="no-tasks">Ei lisättyjä tehtäviä tälle kurssille</p> <!-- Näyttää viestin, että tehtäviä ei ole -->
             {% endfor %}
         </ul>
     </div>
