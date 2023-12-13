@@ -1,0 +1,26 @@
+{% extends 'TimeManagementToolApp/base.html' %}
+
+{% block content %}
+
+    <p><a href="{% url 'TimeManagementToolApp:kurssi' kurssi.id %}">{{ kurssi }}</a></p>
+
+    <p>Muokkaa tehtävää:</p>
+
+    <form method='post'>
+        {% csrf_token %}
+        <div>
+            <p>Muokkaa tehtävä:</p>
+            {{ form.teht }}
+        </div>
+        <div>
+            <p>Vaihda deadline:</p>
+            {{ form.dedis }}
+        </div>
+        <div>
+            <p>Merkikse tehdyksi:</p>
+            {{ form.valmis }}
+        </div>        
+        <button name = "submit">Lisää tehtävä</button>
+    </form>
+
+{% endblock content %}
