@@ -138,3 +138,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #Meidän asetukset
 LOGIN_REDIRECT_URL = 'TimeManagementToolApp:index'
 LOGOUT_REDIRECT_URL = 'TimeManagementToolApp:index'
+LOGIN_URL = 'accounts:login'

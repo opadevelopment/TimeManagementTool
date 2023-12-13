@@ -12,7 +12,8 @@ class TehtForm(forms.ModelForm):
 
     class Meta:
         model = Teht
-        valmis = forms.BooleanField(initial = True, required = False)
+        #valmis = forms.BooleanField(initial = True, required = False)
         fields = ['teht', 'dedis', 'valmis']
         labels = {'teht': ''}
-        widgets = {'dedis': forms.DateInput(attrs={'type': 'date', 'placeholder':'dd-mm-yyy (DOB)', 'class': 'form-control'})}
+        #widgets = {'dedis': forms.DateInput(attrs={'type': 'date', 'placeholder':'dd-mm-yyy (DOB)', 'class': 'form-control'})}
+        widgets = {'dedis': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'})}
