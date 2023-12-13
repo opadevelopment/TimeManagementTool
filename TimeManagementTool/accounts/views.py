@@ -13,5 +13,5 @@ def rekist(request):
             login(request, new_user)
             return redirect('TimeManagementToolApp:index')
     
-    context = {' form': form}
+    context = {'form': form}
     return render(request, 'registration/rekist.html', context)
