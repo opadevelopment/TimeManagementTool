@@ -1,13 +1,21 @@
 {% extends 'TimeManagementToolApp/base.html' %}
 
 {% block content %}
+    <style>
+        .add-course-header {
+            color: cornflowerblue; /* pääväri */
+            transition: color 0.3s; /
+        }
+        .add-course-header:hover {
+            color: #ff1493; /* hiiren alla väri */
+        }
+    </style>
 
-    <p>Lisää kurssi:</p>
+    <p class="add-course-header">Lisää kurssi:</p>
 
-    <form action ="{% url 'TimeManagementToolApp:lisaa_kurssi' %}" method='post'>
+    <form action="{% url 'TimeManagementToolApp:lisaa_kurssi' %}" method='post'>
         {% csrf_token %}
         {{ form.as_div }}
-        <button name = "submit">Lisää kurssi</button>
+        <button name="submit">Lisää kurssi</button>
     </form>
-
 {% endblock content %}

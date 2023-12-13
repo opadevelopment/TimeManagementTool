@@ -21,13 +21,26 @@
             background-color: #d1e8ff; /* Taustaväri kun hiiri on linkin päällä */
             box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Varjostus kun hiiri on linkin päällä */
         }
+        .add-course-link {
+            
+            color: cornflowerblue; /* Linkin tekstin väri*/
+            padding: 6px;
+            border-radius: 5px;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .add-course-link:hover {
+            color: #ff1493; /* väri hiiren ollessa päällä */
+        }
+    
     </style>
 </head>
 <body>
     <h1>Kurssit</h1>
 
 
-    <a href="{% url 'TimeManagementToolApp:lisaa_kurssi' %}">Lisää uusi kurssi</a>
+    <a class="add-course-link" href="{% url 'TimeManagementToolApp:lisaa_kurssi' %}">Lisää uusi kurssi</a>
     <ul style="list-style: none; padding: 0;"> <!-- Lista ilman tyyliteltyjä listamerkkejä ja ilman paddingia -->
         {% for kurssi in kurssit %} <!-- Käydään läpi 'kurssit' lista -->
             <li>
