@@ -4,12 +4,12 @@
 
     <p><a href="{% url 'TimeManagementToolApp:kurssi' kurssi.id %}">{{ kurssi }}</a></p>
 
-    <p>Muokkaa tehtävää:</p>
+    
 
     <form method='post'>
         {% csrf_token %}
         <div>
-            <p>Muokkaa tehtävä:</p>
+            <p>Muokkaa tehtävää:</p>
             {{ form.teht }}
         </div>
         <div>
