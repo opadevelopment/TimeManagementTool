@@ -79,7 +79,6 @@ def muokkaa_tehtava(request, teht_id):
     #Muokataan olemassa olevaa tehtävää
     teht= Teht.objects.get(id=teht_id)
     kurssi = teht.kurssi
-    # Lisätään kun userit käytössä
     # Suojataan muokkausoikeus vain oikealle käyttäjälle
     if kurssi.kayttaja != request.user:
         raise Http404
@@ -100,6 +99,7 @@ def muokkaa_tehtava(request, teht_id):
 
 @login_required
 def poista_tehtava(request, teht_id):
+    #poistetaan tehtävä
     teht = Teht.objects.get(id=teht_id)
     kurssi = teht.kurssi
     if kurssi.kayttaja != request.user:
@@ -111,6 +111,7 @@ def poista_tehtava(request, teht_id):
 
 @login_required
 def poista_kurssi(request, kurssi_id):
+    #poistetaan kurssi
     kurssi = Kurssi.objects.get(id=kurssi_id)
     if kurssi.kayttaja != request.user:
         raise Http404

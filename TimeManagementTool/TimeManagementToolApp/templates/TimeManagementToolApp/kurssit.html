@@ -59,7 +59,7 @@
         <a class="course-link" href="{% url 'TimeManagementToolApp:kurssi' kurssi.id %}">
             {{ kurssi.kurssi }}
         </a>
-        <!-- Delete Form for Each Course -->
+        <!-- Kurssin poisto -->
         <form action="{% url 'TimeManagementToolApp:poista_kurssi' kurssi.id %}" method="post" style="display: inline;">
             {% csrf_token %}
             <button type="submit" class ="delete-course-button" onclick="return confirm('Haluatko varmasti poistaa tämän kurssin?');">Poista Kurssi</button>

@@ -4,7 +4,7 @@
 
 <p><a href="{% url 'TimeManagementToolApp:kurssi' kurssi.id %}">{{ kurssi }}</a></p>
 
-<!-- Edit Task Form -->
+<!-- Tehtävän muokkaus -->
 <form method='post'>
     {% csrf_token %}
     <div>
@@ -22,10 +22,10 @@
     <button name="submit">Tallenna</button>
 </form>
 
-<!-- Delete Task Form -->
+<!-- Tehtävän poisto -->
 <form action="{% url 'TimeManagementToolApp:poista_tehtava' teht.id %}" method="post">
     {% csrf_token %}
-    <button type="submit" onclick="return confirm('Haluatko varmasti poistaa tämän kurssin?');" style="color: red;">Poista Tehtävä</button>
+    <button type="submit" onclick="return confirm('Haluatko varmasti poistaa tämän tehtävän?');" style="color: red;">Poista Tehtävä</button>
 </form>
 
 {% endblock content %}

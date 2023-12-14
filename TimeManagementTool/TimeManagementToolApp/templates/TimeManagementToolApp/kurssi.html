@@ -67,10 +67,8 @@
                     <p class="note-text">{{ teht.teht|linebreaks }}</p> <!-- Näyttää tehtävän tekstin -->
                     {% if teht.dedis %} <!-- Tarkistaa, onko tehtävällä deadline -->
                         <p>Deadline: <span class="deadline">{{ teht.dedis|date:"d.m.Y H:i" }}</span>
-                        </p> <!-- Näyttää deadlinen -->
-                        <a href="{% url 'TimeManagementToolApp:muokkaa_tehtava' teht.id %}">
-                            Muokkaa tehtävää</a></p>
-
+                            </p> <!-- Näyttää deadlinen -->
+                            <a href="{% url 'TimeManagementToolApp:muokkaa_tehtava' teht.id %}">Muokkaa tehtävää</a></p>
                     {% endif %}
                 </li>
             {% empty %} <!-- Jos tehtäviä ei ole -->

@@ -15,7 +15,9 @@ urlpatterns = [
     path('muokkaa_tehtava/<int:teht_id>', views.muokkaa_tehtava, name='muokkaa_tehtava'),
     #Lisää tehtävä -sivu
     path('lisaa_tehtava/<int:kurssi_id>/', views.lisaa_tehtava, name='lisaa_tehtava'),
+    #Poista tehtävä
     path('tehtava/poista/<int:teht_id>/', views.poista_tehtava, name='poista_tehtava'),
+    #Poista kurssi
     path('kurssi/poista/<int:kurssi_id>/', views.poista_kurssi, name='poista_kurssi'),
 
 

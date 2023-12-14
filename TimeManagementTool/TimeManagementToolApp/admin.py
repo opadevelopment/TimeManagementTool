@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+# Modelien rekisteröinti
 
 from .models import Kurssi, Teht
 
