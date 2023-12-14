@@ -10,7 +10,7 @@ from django.http import Http404
 @login_required
 def index(request):
     #etusivu ajanhallinnalle
-    kurssit = Kurssi.objects.annotate(lower_kurssi=Lower('kurssi')).order_by('lower_kurssi') 
+    kurssit = Kurssi.objects.filter(kayttaja=request.user).order_by(Lower('kurssi'))
     #järjestää kurssit aakkosjärjestykseen huomioiden myös pienet alkukirjaimet
     return render(request, 'TimeManagementToolApp/index.html',{'kurssit': kurssit})
 
@@ -98,3 +98,22 @@ def muokkaa_tehtava(request, teht_id):
     context = {'teht': teht, 'kurssi': kurssi, 'form': form}
     return render(request, 'TimeManagementToolApp/muokkaa_tehtava.html', context)
 
+@login_required
+def poista_tehtava(request, teht_id):
+    teht = Teht.objects.get(id=teht_id)
+    kurssi = teht.kurssi
+    if kurssi.kayttaja != request.user:
+        raise Http404
+    if request.method == 'POST':
+        teht.delete()
+        return redirect('TimeManagementToolApp:kurssi', kurssi_id=kurssi.id)
+    return render(request, 'TimeManagementToolApp/poista_tehtava.html', {'teht': teht})
+
+@login_required
+def poista_kurssi(request, kurssi_id):
+    kurssi = Kurssi.objects.get(id=kurssi_id)
+    if kurssi.kayttaja != request.user:
+        raise Http404
+    if request.method == 'POST':
+        kurssi.delete()
+        return redirect('TimeManagementToolApp:kurssit')

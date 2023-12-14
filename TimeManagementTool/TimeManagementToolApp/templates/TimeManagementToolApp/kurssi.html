@@ -15,7 +15,7 @@
         .note-container {
             background-color: #e3f2fd; /* Taustaväri muistiinpanoille */
             padding: 20px;
-            margin-top: 20px; /* Ylämarginaali */
+            margin-top: 10px; /* Ylämarginaali */
             border-radius: 8px; /* Reunojen pyöristys */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Varjostus */
             max-width: 600px; /* Maksimileveys */
@@ -25,7 +25,7 @@
             font-size: 28px;
             font-weight: 600; 
             color: #333333;
-            margin-bottom: 20px; /* Alareunan marginaali */
+            margin-bottom: 10px; /* Alareunan marginaali */
         }
         .note-list {
             list-style: none; /* Poistaa listamerkit */
@@ -33,7 +33,7 @@
             border-top: 1px solid #eaeaea; /* Ylärivin reunaviiva */
         }
         .note-list li {
-            padding: 10px 0; 
+            padding: 0px 0; 
             border-bottom: 1px solid #eaeaea; /* Alareunan reunaviiva */
         }
         .note-list li:last-child {
@@ -61,10 +61,6 @@
         </p>
         <p class="note-header">Tehtävät:</p> 
         
-        
-
-       
-    
         <ul class="note-list">
             {% for teht in kurssi.teht_set.all|dictsort:"dedis" %} <!-- Käy läpi kurssin tehtävät ja järjestää ne deadlinen mukaan -->
                 <li>
