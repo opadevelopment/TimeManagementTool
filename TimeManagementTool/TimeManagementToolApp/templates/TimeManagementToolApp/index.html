@@ -20,6 +20,14 @@
             padding: 15px;
             border-radius: 5px; /* Pyöristää reunat */
             box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Asettaa varjon laatikolle */
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none; /* alaviivat pois */
+            color: inherit;
+        }
+        .kurssi-header:hover { /* muuttaa taustavärin hiiren ollessa blokin yllä */ 
+            background-color: #d4eaf7;
+            text-decoration: none;
         }
         .deadline {
             color: #ff0000; /* Asettaa dealine-pvm:n värin punaiseksi */
@@ -30,7 +38,7 @@
     <h1>Kurssit</h1> 
     <div class="grid-container">
         {% for kurssi in kurssit %} 
-            <div class="kurssi-header">
+            <a href="{% url 'TimeManagementToolApp:kurssi' kurssi.id %}" class="kurssi-header">
                 <h2>{{ kurssi.kurssi }}</h2> <!-- Näyttää kurssin nimen -->
                 <ul class="list-unstyled">
                     {% for teht in kurssi.teht_set.all|dictsort:"dedis" %} 
@@ -44,7 +52,7 @@
                         <li>Ei lisättyjä tehtäviä tälle kurssille</li> <!-- Näyttää viestin, että tehtäviä ei ole lisätty -->
                     {% endfor %}
                 </ul>
-            </div>
+            </a>
         {% endfor %}
     </div>
 </body>
