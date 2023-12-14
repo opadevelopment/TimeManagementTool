@@ -16,10 +16,13 @@
         p a:hover {
             color: #ff1493; /* väri hiiren ollessa päällä */
         }
+        p.message {
+            color: black;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-
 <p>
     <a href="{% url 'TimeManagementToolApp:index' %}">Ajanhallinta</a> -
     <a href="{% url 'TimeManagementToolApp:kurssit' %}">Kurssit</a> -
@@ -30,6 +33,10 @@
         <a href="{% url 'accounts:login' %}">Kirjaudu</a>
     {% endif %}
 </p>
+
+{% if not user.is_authenticated %}
+    <p class="message">Teidän täytyy rekisteröityä/kirjautua käyttääksenne sivustoa</p>
+{% endif %}
 
 {% block content %}{% endblock content %}
 
